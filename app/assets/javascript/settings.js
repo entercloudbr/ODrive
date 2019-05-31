@@ -45,14 +45,14 @@ ipc.on('sync-update', ({sender}, arg) => {
 ipc.on('sync-end', () => {
   $("#synchronize-icon").removeClass();
   $("#synchronize-icon").addClass("fa fa-download");
-  $("#synchronize-text").text('Synchronize');
+  $("#synchronize-text").text('Sincronizar');
   $("#synchronize-button").prop("disabled", true);
 });
 
 ipc.on('sync-enable', () => {
   $("#synchronize-icon").removeClass();
   $("#synchronize-icon").addClass("fa fa-download");
-  $("#synchronize-text").text('Synchronize');
+  $("#synchronize-text").text('Sincronizar');
   $("#synchronize-button").prop("disabled", false);
 });
 
