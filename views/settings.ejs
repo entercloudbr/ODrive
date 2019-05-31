@@ -27,7 +27,7 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
 </script>
 
 <section>
-  <h4><font style="font-family: Arial">Conta</font></h4>
+  <h4><font style="font-family: Arial">Conta do Google</font></h4>
   <%
   if (accounts.length == 0) { %>
     <p><font style="font-family: Arial"><a href="/connect">Conecte</a> uma conta do Google Drive para começar. <a class="btn btn-sm btn-info float-sm-right" href="/connect"><i class="fa fa-arrow-right"></i></a></font></p>
@@ -63,7 +63,7 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
     <div class="custom-control custom-switch">
 
       <input type="checkbox" class="custom-control-input" id="customSwitch1" onclick="permanentlyDeleteSetting(accounts[0], this.checked)" <%- (accounts[0]||{}).permanentlyDeleteSetting ? "checked" : ""%>>
-      <font style="font-family: Arial"><label class="custom-control-label" for="customSwitch1">Conseguir excluir pastas e arquivos permanentemente</label></font>
+      <font style="font-family: Arial"><label class="custom-control-label" for="customSwitch1">Poder excluir pastas e arquivos permanentemente</label></font>
     </div>
 </section>
 
