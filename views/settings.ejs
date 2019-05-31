@@ -32,13 +32,12 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
   if (accounts.length == 0) { %>
     <p><a href="/connect">Conecte</a> uma conta do Google Drive para começar. <a class="btn btn-sm btn-info float-sm-right" href="/connect"><i class="fa fa-arrow-right"></i></a></p>
   <% } else { %>
-    <p><ul class="list-group">
+
     <% for (let account of accounts) {%>
-      <p><%= account.email %> <a class="btn btn-sm btn-danger pull-right" href="/delete/<%- account.id %>"><i class="fa fa-times"></i></a></p>
+      <p><%= account.email %></p>
     <%
     } %>
-  </ul></p>
-    <!--<p><a href="/add">Adicionar</a> outra conta do Google Drive. <a class="btn btn-sm btn-info float-sm-right" href="/add"><i class="fa fa-plus"></i></a></p>-->
+    
     <%
   }
   %>
@@ -75,8 +74,8 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
 <section>
   <div class="row space-between">
  
-    <span id="synchronize-status"><%- (accounts[0]||{}).running ? "Sincronizada" : ""%></span>
-    <button class="btn btn-primary" id="synchronize-button" onclick="beginSynchronization(accounts[0])" <%- (accounts[0]||{}).running ? "disabled='disabled'" : ""%>><i class="fa fa-download" id="synchronize-icon"></i> <span id="synchronize-text">Sincronizar agora</span></button>
+    <span id="synchronize-status"><%- (accounts[0]||{}).running ? "Conta sincronizada com sucesso! " : ""%></span>
+    <button class="btn btn-primary" id="synchronize-button" onclick="beginSynchronization(accounts[0])" <%- (accounts[0]||{}).running ? "disabled='disabled'" : ""%>><i class="fa fa-download" id="synchronize-icon"></i> <span id="synchronize-text">Ativar sincronização</span></button>
   </div>
 </section>
 
