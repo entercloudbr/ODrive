@@ -27,14 +27,14 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
 </script>
 
 <section>
-  <h4>Conta</h4>
+  <h4><font style="font-family: Arial">Conta</font></h4>
   <%
   if (accounts.length == 0) { %>
-    <p><a href="/connect">Conecte</a> uma conta do Google Drive para começar. <a class="btn btn-sm btn-info float-sm-right" href="/connect"><i class="fa fa-arrow-right"></i></a></p>
+    <p><font style="font-family: Arial"><a href="/connect">Conecte</a> uma conta do Google Drive para começar. <a class="btn btn-sm btn-info float-sm-right" href="/connect"><i class="fa fa-arrow-right"></i></a></font></p>
   <% } else { %>
 
     <% for (let account of accounts) {%>
-      <p><%= account.email %></p>
+      <p><font style="font-family: Arial"><%= account.email %></font></p>
     <%
     } %>
     
@@ -46,11 +46,11 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
 <hr/>
 
 <section>
-  <h4>Localização da pasta do Google Drive</h4>
+  <h4><font style="font-family: Arial">Localização da pasta do Google Drive</font></h4>
 
   <div>
     <label class="custom-file">
-         <span class="custom-file-control folder" id="filePath"><%- (accounts[0]||{folder:""}).folder %></span>
+         <font style="font-family: Arial"><span class="custom-file-control folder" id="filePath"><%- (accounts[0]||{folder:""}).folder %></span></font>
     </label>
   </div>
   </br>
@@ -63,7 +63,7 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
     <div class="custom-control custom-switch">
 
       <input type="checkbox" class="custom-control-input" id="customSwitch1" onclick="permanentlyDeleteSetting(accounts[0], this.checked)" <%- (accounts[0]||{}).permanentlyDeleteSetting ? "checked" : ""%>>
-      <label class="custom-control-label" for="customSwitch1">Conseguir excluir pastas e arquivos permanentemente</label>
+      <font style="font-family: Arial"><label class="custom-control-label" for="customSwitch1">Conseguir excluir pastas e arquivos permanentemente</label></font>
     </div>
 </section>
 
@@ -74,7 +74,7 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
 <section>
   <div class="row space-between">
  
-    <span id="synchronize-status"><%- (accounts[0]||{}).running ? "Conta sincronizada com sucesso! " : ""%></span>
+    <font style="font-family: Arial"><span id="synchronize-status"><%- (accounts[0]||{}).running ? "Conta sincronizada com sucesso! " : ""%></span></font>
     <button class="btn btn-primary" id="synchronize-button" onclick="beginSynchronization(accounts[0])" <%- (accounts[0]||{}).running ? "disabled='disabled'" : ""%>><i class="fa fa-download" id="synchronize-icon"></i> <span id="synchronize-text">Ativar sincronização</span></button>
   </div>
 </section>
