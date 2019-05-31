@@ -27,13 +27,14 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
 </script>
 
 <section>
+  <h4>Conta</h4>
   <%
   if (accounts.length == 0) { %>
     <p><a href="/connect">Conecte</a> uma conta do Google Drive para começar. <a class="btn btn-sm btn-info float-sm-right" href="/connect"><i class="fa fa-arrow-right"></i></a></p>
   <% } else { %>
     <p><ul class="list-group">
     <% for (let account of accounts) {%>
-      <li class="list-group-item"><%= account.email %> <a class="btn btn-sm btn-danger pull-right" href="/delete/<%- account.id %>"><i class="fa fa-times"></i></a></li>
+      <p><%= account.email %> <a class="btn btn-sm btn-danger pull-right" href="/delete/<%- account.id %>"><i class="fa fa-times"></i></a></p>
     <%
     } %>
   </ul></p>
@@ -46,29 +47,34 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
 <hr/>
 
 <section>
-  <h4>Escolha a localização da pasta do Google Drive.</h4>
+  <h4>Localização da pasta do Google Drive</h4>
 
   <div>
     <label class="custom-file">
-      <input type="file" id="file" class="custom-file-input" onchange="handleUIChangeFolder(accounts[0])" directory webkitdirectory <% if (accounts.length == 0 || accounts[0].running) {%>disabled<%}%>>
-      <span class="custom-file-control folder" id="filePath"><%- (accounts[0]||{folder:""}).folder %></span>
+         <span class="custom-file-control folder" id="filePath"><%- (accounts[0]||{folder:""}).folder %></span>
     </label>
   </div>
+  </br>
 </section>
 
 <hr/>
+</br>
 
 <section>
     <div class="custom-control custom-switch">
+
       <input type="checkbox" class="custom-control-input" id="customSwitch1" onclick="permanentlyDeleteSetting(accounts[0], this.checked)" <%- (accounts[0]||{}).permanentlyDeleteSetting ? "checked" : ""%>>
-      <label class="custom-control-label" for="customSwitch1">Possibilidade de excluir pastas e arquivos permanentemente</label>
+      <label class="custom-control-label" for="customSwitch1">Excluir pastas e arquivos permanentemente</label>
     </div>
 </section>
 
+</br>
 <hr/>
+</br>
 
 <section>
   <div class="row space-between">
+ 
     <span id="synchronize-status"><%- (accounts[0]||{}).running ? "Já sincronizada." : ""%></span>
     <button class="btn btn-primary" id="synchronize-button" onclick="beginSynchronization(accounts[0])" <%- (accounts[0]||{}).running ? "disabled='disabled'" : ""%>><i class="fa fa-download" id="synchronize-icon"></i> <span id="synchronize-text">Sincronizar agora</span></button>
   </div>
