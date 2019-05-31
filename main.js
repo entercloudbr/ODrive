@@ -58,7 +58,7 @@ function generateTrayMenu() {
 
   gbs.trayMenu = Menu.buildFromTemplate([
     {
-      label: 'Preferences...',
+      label: 'Preferências...',
       click () {
         if (gbs.win === null) {
           createWindow();
@@ -66,7 +66,7 @@ function generateTrayMenu() {
       }
     },
     {
-      label: 'Launch on startup',
+      label: 'Carregar no início',
       click() {
         if (gbs.autorun) {
           autolauncher.disable().then(gbs.autorun = false).catch(err => console.error("Error when disabling auto launch", err));
@@ -79,7 +79,7 @@ function generateTrayMenu() {
     },
     {type: 'separator'},
     {
-      label: 'Quit ODrive',
+      label: 'Sair do Google Drive',
       click () {process.exit(0);}
     }
   ]);
