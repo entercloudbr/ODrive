@@ -30,7 +30,7 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
   <h4><font style="font-family: Arial">Conta do Google</font></h4>
   <%
   if (accounts.length == 0) { %>
-    <p><font style="font-family: Arial"><a href="/connect">Conecte</a> uma conta do Google Drive para começar. <a class="btn btn-sm btn-info float-sm-right" href="/connect"><i class="fa fa-arrow-right"></i></a></font></p>
+    <p><font style="font-family: Arial"><a href="/connect">Conecte</a> uma conta do Google para começar. <a class="btn btn-sm btn-info float-sm-right" href="/connect"><i class="fa fa-arrow-right"></i></a></font></p>
   <% } else { %>
 
     <% for (let account of accounts) {%>
@@ -77,7 +77,9 @@ accounts = <%- JSON.stringify(simplifiedAccounts) %>;
     <font style="font-family: Arial"><span id="synchronize-status"><%- (accounts[0]||{}).running ? "Conta sincronizada com sucesso! " : ""%></span></font>
     <button class="btn btn-primary" id="synchronize-button" onclick="beginSynchronization(accounts[0])" <%- (accounts[0]||{}).running ? "disabled='disabled'" : ""%>><i class="fa fa-download" id="synchronize-icon"></i> <span id="synchronize-text">Ativar sincronização</span></button>
   </div>
+  </br>
 </section>
+
 
 <script>
   <% if (accounts[0] && accounts[0].sync.syncing) {%>
