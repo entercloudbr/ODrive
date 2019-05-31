@@ -65,18 +65,6 @@ function generateTrayMenu() {
         }
       }
     },
-    {
-      label: 'Carregar no início',
-      click() {
-        if (gbs.autorun) {
-          autolauncher.disable().then(gbs.autorun = false).catch(err => console.error("Error when disabling auto launch", err));
-        } else {
-          autolauncher.enable().then(gbs.autorun = true).catch(err => console.error("Error when enabling auto launch", err));
-        }
-      },
-      type: 'checkbox',
-      checked: gbs.autorun
-    },
     {type: 'separator'},
     {
       label: 'Sair do Google Drive',
