@@ -29,7 +29,7 @@ class Account extends EventEmitter {
 
   /* Get url to redirect to in order to authenticate */
   get authUrl() {
-    console.log("Generating oauth url");
+    console.log("Gerando endereço de autenticação");
     return this.oauth.generateAuthUrl({
       access_type: 'offline',
       scope: 'https://www.googleapis.com/auth/drive',
@@ -42,7 +42,7 @@ class Account extends EventEmitter {
 
   /* Handle response code from authentification for google oauth */
   handleCode(code) {
-    console.log("Handling authentification code");
+    console.log("Manipulando o código de autenticação");
     return new Promise((resolve, reject) => {
       this.oauth.getToken(code, (err, tokens) => {
         if (err) {
@@ -56,7 +56,7 @@ class Account extends EventEmitter {
 
   /* Update user info (email, storage etc.) using oauth tokens */
   updateUserInfo() {
-    console.log("Updating account info");
+    console.log("Atualizando informações da conta");
     return new Promise((resolve, reject) => {
       this.drive.about.get({q: "user.me == true", fields: "user"}, (err, about) => {
         //console.log("User info", about);
@@ -75,7 +75,7 @@ class Account extends EventEmitter {
 
   /* Save the data to database */
   async save() {
-    console.log("Saving account to db");
+    console.log("Salvando conta");
     this.saveTime = Date.now();
     let doc = this.document || {};
 
@@ -93,11 +93,11 @@ class Account extends EventEmitter {
       this.id = this.document._id;
     }
 
-    console.log("Saved account!");
+    console.log("Conta salva!");
   }
 
   async erase() {
-    console.log("Removing account from db");
+    console.log("Removendo conta");
     if (this.sync) {
       await this.sync.erase();
       this.sync = null;
