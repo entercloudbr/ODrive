@@ -153,7 +153,7 @@ class Sync extends EventEmitter {
         async (file) => {
           if (this.shouldIgnoreFile(file)) {
             ignored += 1;
-            notify(`${counter} files downloaded, ${ignored} files ignored...`);
+            notify(`${counter} arquivos baixados, ${ignored} arquivos ignorados...`);
           } else {
             counter += 1;
             if (Number(file.size) >= 0) {
@@ -169,7 +169,7 @@ class Sync extends EventEmitter {
       for (const result of results) {
         await result;
       }
-      notify(`${counter} (${this.formatBytes(fileSize)}) files downloaded, ${ignored} files ignored...`);
+      notify(`${counter} (${this.formatBytes(fileSize)}) arquivos baixados, ${ignored} arquivos ignorados...`);
     }
  
     return { counter, ignored, fileSize};
@@ -178,7 +178,7 @@ class Sync extends EventEmitter {
   async start(notifyCallback) {
     await this.finishLoading();
 
-    assert(!this.syncing, "Sync already in progress");
+    assert(!this.syncing, "Sincronização em curso");
     this.syncing = true;
 
     try {
@@ -187,16 +187,16 @@ class Sync extends EventEmitter {
       let rootInfo = await this.getFileInfo("root");
       this.rootId = rootInfo.id;
 
-      notify("Watching changes in the remote folder...");
+      notify("Verificando alterações na pasta remota...");
       await this.startWatchingChanges();
 
-      notify("Getting files info...");
+      notify("Obtendo informações dos arquivos...");
 
       let files = await this.downloadFolderStructure("root");
       await this.computePaths();
 
       let result = await this.ParallelMapFlow(files, notifyCallback);
-      notify(`All done! ${result.counter} (${this.formatBytes(result.fileSize)}) files downloaded and ${result.ignored} ignored.`);
+      notify(`Tudo pronto! ${result.counter} (${this.formatBytes(result.fileSize)}) arquivos baixados e ${result.ignored} ignorados.`);
       this.syncing = false;
       this.synced = true;
 
