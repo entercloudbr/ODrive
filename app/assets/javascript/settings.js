@@ -13,7 +13,7 @@ function beginSynchronization(account) {
 function UIBeginSyncing() {
   $("#synchronize-icon").removeClass();
   $("#synchronize-icon").addClass("fa fa-refresh fa-spin");
-  $("#synchronize-text").text('Synchronizing...');
+  $("#synchronize-text").text('Sincronizando...');
 }
 
 // eslint-disable-next-line no-unused-vars
